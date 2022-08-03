@@ -19,7 +19,10 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     -webkit-font-smoothing: antialiased;
-    background: ${props => props.theme.background}
+    background: ${props => props.theme.background};
+    padding: 0 10rem;
+    max-width: 90rem;
+    margin: 0 auto;
   }
 
   body,
@@ -27,6 +30,11 @@ export const GlobalStyles = createGlobalStyle`
   textarea,
   button {
     font-family: "Roboto", sans-serif;
+  }
+
+  h1 {
+    font-family: "Baloo 2", sans-serif;
+
   }
 
   button {
