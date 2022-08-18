@@ -4,8 +4,10 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding: 2rem 1.5rem;
 
+  max-width: 75rem;
+  margin: 0 auto;
   .menu-actions {
     display: flex;
     gap: 0.75rem;

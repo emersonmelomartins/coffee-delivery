@@ -20,9 +20,8 @@ export const GlobalStyles = createGlobalStyle`
   body {
     -webkit-font-smoothing: antialiased;
     background: ${props => props.theme.background};
-    padding: 0 10rem;
-    max-width: 90rem;
-    margin: 0 auto;
+    /* padding: 0 10rem; */
+    /* margin: 0 auto; */
   }
 
   body,
