@@ -20,7 +20,6 @@ export const CoffeeListContainer = styled.section`
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    justify-content: center;
-    /* width: 100%; */
+    justify-content: left;
   }
 `;

@@ -10,13 +10,8 @@ export const CoffeeCardContainer = styled.div`
   align-items: center;
   justify-items: center;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
   width: 100%;
-
-  img {
-    margin: 0 auto;
-    margin-top: -1.5rem;
-  }
 
   background: ${props => props.theme["base-card"]};
 
@@ -24,6 +19,16 @@ export const CoffeeCardContainer = styled.div`
   border-bottom-left-radius: 36px;
   border-top-left-radius: 8px;
   border-bottom-right-radius: 8px;
+
+  img {
+    margin: 0 auto;
+    margin-top: -3.2rem;
+  }
+
+  .tag-list {
+    display: flex;
+    gap: 0.5rem;
+  }
 
   .card-description {
     text-align: center;
