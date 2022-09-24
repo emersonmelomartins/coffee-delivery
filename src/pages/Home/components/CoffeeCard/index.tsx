@@ -1,6 +1,8 @@
-import { Minus, Plus, ShoppingCartSimple } from "phosphor-react";
 import { useState } from "react";
-import { defaultTheme } from "../../styles/themes/defaultTheme";
+import { Minus, Plus, ShoppingCartSimple } from "phosphor-react";
+
+import { defaultTheme } from "../../../../styles/themes/defaultTheme";
+
 import { CoffeeCardContainer, Tag } from "./styles";
 
 interface CoffeeCardProps {

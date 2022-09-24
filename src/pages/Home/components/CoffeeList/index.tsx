@@ -1,4 +1,4 @@
-import { CoffeeCard } from "../../../../components/CoffeeCard";
+import { CoffeeCard } from "../CoffeeCard";
 import { CoffeeListContainer } from "./styles";
 
 import { data as MOCKDATA } from "../../../../../data";
