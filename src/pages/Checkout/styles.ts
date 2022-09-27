@@ -27,6 +27,8 @@ export const AddressContent = styled.div`
 
   div.form-item {
     display: flex;
+    gap: 1rem;
+    margin-top: 0.75rem;
 
     input {
       width: 100%;

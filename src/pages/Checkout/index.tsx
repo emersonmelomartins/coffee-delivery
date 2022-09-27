@@ -5,6 +5,7 @@ import {
   MapPin,
   Money,
 } from "phosphor-react";
+import { Input } from "../../components/Form/Input";
 import { defaultTheme } from "../../styles/themes/defaultTheme";
 import {
   AddressContent,
@@ -29,34 +30,37 @@ export function Checkout() {
           </div>
 
           <div className="form-item">
-            <input
+            <Input
               id="cep"
               name="cep"
               type="text"
               placeholder="CEP"
               aria-label="cep"
+              required
             />
           </div>
 
           <div className="form-item">
-            <input
+            <Input
               id="rua"
               name="rua"
               type="text"
               placeholder="Rua"
               aria-label="rua"
+              required
             />
           </div>
 
           <div className="form-item">
-            <input
+            <Input
               id="numero"
               name="numero"
               type="text"
               placeholder="Número"
               aria-label="numero"
+              required
             />
-            <input
+            <Input
               id="complemento"
               name="complemento"
               type="text"
@@ -66,26 +70,29 @@ export function Checkout() {
           </div>
 
           <div className="form-item">
-            <input
+            <Input
               id="bairro"
               name="bairro"
               type="text"
               placeholder="Bairro"
               aria-label="bairro"
+              required
             />
-            <input
+            <Input
               id="cidade"
               name="cidade"
               type="text"
               placeholder="Cidade"
               aria-label="cidade"
+              required
             />
-            <input
+            <Input
               id="uf"
               name="uf"
               type="text"
               placeholder="UF"
               aria-label="uf"
+              required
             />
           </div>
         </AddressContent>
