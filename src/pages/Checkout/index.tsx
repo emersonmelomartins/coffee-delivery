@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
 import {
   Bank,
   CreditCard,
@@ -5,6 +7,7 @@ import {
   MapPin,
   Money,
 } from "phosphor-react";
+import { useState } from "react";
 import { Input } from "../../components/Form/Input";
 import { defaultTheme } from "../../styles/themes/defaultTheme";
 import {
@@ -13,20 +16,38 @@ import {
   CoffeeContainer,
   OrderContainer,
   PaymentContent,
+  PaymentRadioSelection,
   SelectedCoffeeContent,
+  SelectedCoffeeList,
 } from "./styles";
 
+import imagePng from "../../assets/cafe-arabe.png";
+import { InputNumber } from "./components/InputNumber";
+import { RemoveButton } from "./components/RemoveButton";
+
+enum PaymentType {
+  CreditCard = 0,
+  DebitCard = 1,
+  Money = 3,
+}
+
 export function Checkout() {
+  const [selectedPaymentType, setSelectedPaymentType] = useState<PaymentType>(
+    PaymentType.CreditCard
+  );
+
   return (
     <CheckoutForm>
       <OrderContainer>
-        <strong>Complete seu pedido</strong>
+        <strong className="card-title">Complete seu pedido</strong>
 
         <AddressContent>
-          <MapPin color={defaultTheme["yellow-dark"]} />
-          <div>
-            <span>Endereço de Entrega</span>
-            <p>Informe o endereço onde deseja receber seu pedido</p>
+          <div className="card-description">
+            <MapPin color={defaultTheme["yellow-dark"]} size={22} />
+            <div>
+              <span>Endereço de Entrega</span>
+              <p>Informe o endereço onde deseja receber seu pedido</p>
+            </div>
           </div>
 
           <div className="form-item">
@@ -98,35 +119,97 @@ export function Checkout() {
         </AddressContent>
 
         <PaymentContent>
-          <CurrencyDollar color={defaultTheme.purple} />
-          <div>
-            <span>Pagamento</span>
-            <p>
-              O pagamento é feito na entrega. Escolha a forma que deseja pagar
-            </p>
+          <div className="card-description">
+            <CurrencyDollar color={defaultTheme.purple} size={22} />
+            <div>
+              <span>Pagamento</span>
+              <p>
+                O pagamento é feito na entrega. Escolha a forma que deseja pagar
+              </p>
+            </div>
           </div>
 
-          <div>
-            <button type="button">
+          <PaymentRadioSelection>
+            <input
+              type="radio"
+              name="payment_type"
+              id={String(PaymentType.CreditCard)}
+              value={PaymentType.CreditCard}
+              defaultChecked={selectedPaymentType === PaymentType.CreditCard}
+              onClick={() => setSelectedPaymentType(PaymentType.CreditCard)}
+            />
+            <label htmlFor={String(PaymentType.CreditCard)}>
               <CreditCard />
               Cartão de Crédito
-            </button>
-            <button type="button">
+            </label>
+
+            <input
+              type="radio"
+              name="payment_type"
+              id={String(PaymentType.DebitCard)}
+              value={PaymentType.DebitCard}
+              defaultChecked={selectedPaymentType === PaymentType.DebitCard}
+              onClick={() => setSelectedPaymentType(PaymentType.DebitCard)}
+            />
+            <label htmlFor={String(PaymentType.DebitCard)}>
               <Bank />
               Cartão de Débito
-            </button>
-            <button type="button">
+            </label>
+
+            <input
+              type="radio"
+              name="payment_type"
+              id={String(PaymentType.Money)}
+              value={PaymentType.Money}
+              defaultChecked={selectedPaymentType === PaymentType.Money}
+              onClick={() => setSelectedPaymentType(PaymentType.Money)}
+            />
+            <label htmlFor={String(PaymentType.Money)}>
               <Money />
               Dinheiro
-            </button>
-          </div>
+            </label>
+          </PaymentRadioSelection>
         </PaymentContent>
       </OrderContainer>
 
       <CoffeeContainer>
-        <strong>Cafés selecionados</strong>
+        <strong className="card-title">Cafés selecionados</strong>
         <SelectedCoffeeContent>
-          <p>Lista de cafés selecionados </p>
+          <SelectedCoffeeList>
+            <li className="coffee-item">
+              <img src={imagePng} alt="" className="coffee-item__thumbnail" />
+
+              <div className="coffee-item__details">
+                <span>Expresso Tradicional</span>
+
+                <div className="coffee-buttons">
+                  <InputNumber />
+                  <RemoveButton />
+                </div>
+              </div>
+
+              <div className="coffee-price">
+                <strong>R$ 9,90</strong>
+              </div>
+            </li>
+
+            <li className="coffee-item">
+              <img src={imagePng} alt="" className="coffee-item__thumbnail" />
+
+              <div className="coffee-item__details">
+                <span>Expresso Tradicional</span>
+
+                <div className="coffee-buttons">
+                  <InputNumber />
+                  <RemoveButton />
+                </div>
+              </div>
+
+              <div className="coffee-price">
+                <strong>R$ 9,90</strong>
+              </div>
+            </li>
+          </SelectedCoffeeList>
 
           <p>Total </p>
 
