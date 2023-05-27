@@ -6,6 +6,21 @@ import { CoffeeListContainer } from "./styles";
 
 import { CartContext } from "../../../../context/CartContext";
 
+import arabe from "../../../../assets/cafe-arabe.png";
+import capuccino from "../../../../assets/cafe-capuccino.png";
+import leite from "../../../../assets/cafe-com-leite.png";
+import cubano from "../../../../assets/cafe-cubano.png";
+import americano from "../../../../assets/cafe-expresso-americano.png";
+import cremoso from "../../../../assets/cafe-expresso-cremoso.png";
+import gelado from "../../../../assets/cafe-expresso-gelado.png";
+import tradicional from "../../../../assets/cafe-expresso-tradicional.png";
+import havaiano from "../../../../assets/cafe-havaiano.png";
+import irlandes from "../../../../assets/cafe-irlandes.png";
+import latte from "../../../../assets/cafe-latte.png";
+import macchiato from "../../../../assets/cafe-macchiato.png";
+import mocaccino from "../../../../assets/cafe-mocaccino.png";
+import quente from "../../../../assets/chocolate-quente.png";
+
 export const MOCKDATA = [
   {
     id: 1,
@@ -13,7 +28,7 @@ export const MOCKDATA = [
     description: "O tradicional café feito com água quente e grãos moídos",
     price: 9.9,
     tags: ["Tradicional"],
-    imageUrl: "./src/assets/cafe-expresso-tradicional.png",
+    imageUrl: tradicional,
   },
   {
     id: 2,
@@ -21,7 +36,7 @@ export const MOCKDATA = [
     description: "Expresso diluído, menos intenso que o tradicional",
     price: 9.9,
     tags: ["Tradicional"],
-    imageUrl: "./src/assets/cafe-expresso-americano.png",
+    imageUrl: americano,
   },
   {
     id: 3,
@@ -29,7 +44,7 @@ export const MOCKDATA = [
     description: "Café expresso tradicional com espuma cremosa",
     price: 9.9,
     tags: ["Tradicional"],
-    imageUrl: "./src/assets/cafe-expresso-cremoso.png",
+    imageUrl: cremoso,
   },
   {
     id: 4,
@@ -37,7 +52,7 @@ export const MOCKDATA = [
     description: "Bebida preparada com café expresso e cubos de gelo",
     price: 9.9,
     tags: ["Tradicional", "Gelado"],
-    imageUrl: "./src/assets/cafe-expresso-gelado.png",
+    imageUrl: gelado,
   },
   {
     id: 5,
@@ -45,7 +60,7 @@ export const MOCKDATA = [
     description: "Meio a meio de expresso tradicional com leite vaporizado",
     price: 9.9,
     tags: ["Tradicional", "Com Leite"],
-    imageUrl: "./src/assets/cafe-com-leite.png",
+    imageUrl: leite,
   },
   {
     id: 6,
@@ -54,7 +69,7 @@ export const MOCKDATA = [
       "Uma dose de café expresso com o dobro de leite e espuma cremosa",
     price: 9.9,
     tags: ["Tradicional", "Com Leite"],
-    imageUrl: "./src/assets/cafe-latte.png",
+    imageUrl: latte,
   },
   {
     id: 7,
@@ -63,7 +78,7 @@ export const MOCKDATA = [
       "Bebida com canela feita de doses iguais de café, leite e espuma",
     price: 9.9,
     tags: ["Tradicional", "Com Leite"],
-    imageUrl: "./src/assets/cafe-capuccino.png",
+    imageUrl: capuccino,
   },
   {
     id: 8,
@@ -72,7 +87,7 @@ export const MOCKDATA = [
       "Café expresso misturado com um pouco de leite quente e espuma",
     price: 9.9,
     tags: ["Tradicional", "Com Leite"],
-    imageUrl: "./src/assets/cafe-macchiato.png",
+    imageUrl: macchiato,
   },
   {
     id: 9,
@@ -80,7 +95,7 @@ export const MOCKDATA = [
     description: "Café expresso com calda de chocolate, pouco leite e espuma",
     price: 9.9,
     tags: ["Tradicional", "Com Leite"],
-    imageUrl: "./src/assets/cafe-mocaccino.png",
+    imageUrl: mocaccino,
   },
   {
     id: 10,
@@ -88,7 +103,7 @@ export const MOCKDATA = [
     description: "Bebida feita com chocolate dissolvido no leite quente e café",
     price: 9.9,
     tags: ["Especial", "Com Leite"],
-    imageUrl: "./src/assets/chocolate-quente.png",
+    imageUrl: quente,
   },
   {
     id: 11,
@@ -97,7 +112,7 @@ export const MOCKDATA = [
       "Drink gelado de café expresso com rum, creme de leite e hortelã",
     price: 9.9,
     tags: ["Especial", "Alcoólico", "Gelado"],
-    imageUrl: "./src/assets/cafe-cubano.png",
+    imageUrl: cubano,
   },
   {
     id: 12,
@@ -105,7 +120,7 @@ export const MOCKDATA = [
     description: "Bebida adocicada preparada com café e leite de coco",
     price: 9.9,
     tags: ["Especial"],
-    imageUrl: "./src/assets/cafe-havaiano.png",
+    imageUrl: havaiano,
   },
   {
     id: 13,
@@ -113,7 +128,7 @@ export const MOCKDATA = [
     description: "Bebida preparada com grãos de café árabe e especiarias",
     price: 9.9,
     tags: ["Especial"],
-    imageUrl: "./src/assets/cafe-arabe.png",
+    imageUrl: arabe,
   },
   {
     id: 14,
@@ -121,7 +136,7 @@ export const MOCKDATA = [
     description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",
     price: 9.9,
     tags: ["Especial", "Alcoólico"],
-    imageUrl: "./src/assets/cafe-irlandes.png",
+    imageUrl: irlandes,
   },
 ];
 
