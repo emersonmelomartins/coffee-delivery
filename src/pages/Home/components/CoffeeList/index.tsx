@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 import { CoffeeCard } from "../CoffeeCard";
 import { CoffeeListContainer } from "./styles";
 
-import { data as MOCKDATA } from "../../../../../data";
 import { CartContext } from "../../../../context/CartContext";
+import { data as MOCKDATA } from "../../../../data";
 
 interface CoffeeItem {
   id: number;
