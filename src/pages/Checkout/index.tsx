@@ -8,6 +8,7 @@ import {
   Money,
 } from "phosphor-react";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { Input } from "../../components/Form/Input";
 import { defaultTheme } from "../../styles/themes/defaultTheme";
 import {
@@ -33,7 +34,7 @@ enum PaymentType {
   Money = 3,
 }
 
-export function Checkout() {
+export function CheckoutPage() {
   const [selectedPaymentType, setSelectedPaymentType] = useState<PaymentType>(
     PaymentType.CreditCard
   );
@@ -246,7 +247,9 @@ export function Checkout() {
             </div>
           </CoffeeTotal>
 
-          <Button type="submit">Confirmar Pedido</Button>
+          <NavLink to="/success">
+            <Button type="button">Confirmar Pedido</Button>
+          </NavLink>
         </SelectedCoffeeContent>
       </CoffeeContainer>
     </CheckoutForm>

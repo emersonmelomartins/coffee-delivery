@@ -1,15 +1,17 @@
 import { Route, Routes } from "react-router-dom";
 import { PublicLayout } from "../layout/PublicLayout";
 
-import { Checkout } from "../pages/Checkout";
-import { Home } from "../pages/Home";
+import { CheckoutPage } from "../pages/Checkout";
+import { HomePage } from "../pages/Home";
+import { SuccessPage } from "../pages/Success";
 
 export function MainRouter() {
   return (
     <Routes>
       <Route path="" element={<PublicLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/success" element={<SuccessPage />} />
       </Route>
     </Routes>
   );
