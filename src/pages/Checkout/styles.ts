@@ -20,6 +20,7 @@ export const CheckoutForm = styled.form`
 
 export const OrderContainer = styled.div`
   width: 60%;
+  max-height: 60vh;
 
   .card-description {
     display: flex;
@@ -130,6 +131,9 @@ export const SelectedCoffeeContent = styled.div`
 `;
 
 export const SelectedCoffeeList = styled.ul`
+  max-height: 17.5rem;
+  overflow: auto;
+
   .coffee-item {
     display: flex;
     align-items: center;

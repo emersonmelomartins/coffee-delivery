@@ -1,10 +1,14 @@
 import { MapPin, ShoppingCart } from "phosphor-react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import logoSvg from "../../assets/logo.svg";
+import { CartContext } from "../../context/CartContext";
 import { defaultTheme } from "../../styles/themes/defaultTheme";
 import { CartLength, HeaderContainer } from "./styles";
 
 export function Header() {
+  const { cart } = useContext(CartContext);
+
   return (
     <HeaderContainer>
       <NavLink to="/">
@@ -27,7 +31,7 @@ export function Header() {
               weight="fill"
               color={defaultTheme["yellow-dark"]}
             />
-            <CartLength $show>3</CartLength>
+            <CartLength $show={cart.length > 0}>{cart.length}</CartLength>
           </button>
         </NavLink>
       </div>

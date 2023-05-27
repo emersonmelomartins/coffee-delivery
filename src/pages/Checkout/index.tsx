@@ -7,8 +7,8 @@ import {
   MapPin,
   Money,
 } from "phosphor-react";
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useContext, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Input } from "../../components/Form/Input";
 import { defaultTheme } from "../../styles/themes/defaultTheme";
 import {
@@ -23,8 +23,8 @@ import {
   SelectedCoffeeList,
 } from "./styles";
 
-import imagePng from "../../assets/cafe-arabe.png";
 import { Button } from "../../components/Button";
+import { CartContext } from "../../context/CartContext";
 import { InputNumber } from "./components/InputNumber";
 import { RemoveButton } from "./components/RemoveButton";
 
@@ -35,14 +35,45 @@ enum PaymentType {
 }
 
 export function CheckoutPage() {
+  const navigate = useNavigate();
+
+  const {
+    cart,
+    removeCoffeeFromCart,
+    decrementCartItemAmount,
+    incrementCartItemAmount,
+  } = useContext(CartContext);
+
   const [selectedPaymentType, setSelectedPaymentType] = useState<PaymentType>(
     PaymentType.CreditCard
   );
 
-  const [coffeeQuantity, setCoffeeQuantity] = useState(1);
+  const total = cart
+    .map(c => c.total)
+    .reduce((curr, acc) => {
+      const soma = curr + acc;
+
+      return soma;
+    }, 0);
+
+  function handleRemoveCoffeeFromCart(id: number) {
+    removeCoffeeFromCart(id);
+  }
+
+  function handleIncrement(id: number) {
+    incrementCartItemAmount(id);
+  }
+
+  function handleDecrement(id: number) {
+    decrementCartItemAmount(id);
+  }
+
+  function handleSubmit() {
+    navigate("/success");
+  }
 
   return (
-    <CheckoutForm>
+    <CheckoutForm onSubmit={handleSubmit}>
       <OrderContainer>
         <strong className="card-title">Complete seu pedido</strong>
 
@@ -180,76 +211,79 @@ export function CheckoutPage() {
       <CoffeeContainer>
         <strong className="card-title">Cafés selecionados</strong>
         <SelectedCoffeeContent>
-          <SelectedCoffeeList>
-            <li className="coffee-item">
-              <img src={imagePng} alt="" className="coffee-item__thumbnail" />
+          {cart.length > 0 ? (
+            <>
+              <SelectedCoffeeList>
+                {cart.map(cartItem => (
+                  <li className="coffee-item" key={cartItem.product.id}>
+                    <img
+                      src={cartItem.product.imageUrl}
+                      className="coffee-item__thumbnail"
+                      alt=""
+                    />
 
-              <div className="coffee-item__details">
-                <span>Expresso Tradicional</span>
+                    <div className="coffee-item__details">
+                      <span>{cartItem.product.title}</span>
 
-                <div className="coffee-buttons">
-                  <InputNumber
-                    value={coffeeQuantity}
-                    onClickIncrement={() =>
-                      setCoffeeQuantity(coffeeQuantity + 1)
-                    }
-                    onClickDecrement={() =>
-                      setCoffeeQuantity(coffeeQuantity - 1)
-                    }
-                  />
-                  <RemoveButton onClick={() => alert("Removido")} />
+                      <div className="coffee-buttons">
+                        <InputNumber
+                          value={cartItem.amount}
+                          onClickIncrement={() =>
+                            handleIncrement(cartItem.product.id)
+                          }
+                          onClickDecrement={() =>
+                            handleDecrement(cartItem.product.id)
+                          }
+                        />
+                        <RemoveButton
+                          onClick={() =>
+                            handleRemoveCoffeeFromCart(cartItem.product.id)
+                          }
+                        />
+                      </div>
+                    </div>
+
+                    <div className="coffee-price">
+                      <strong>R$ 9,90</strong>
+                    </div>
+                  </li>
+                ))}
+              </SelectedCoffeeList>
+
+              <CoffeeTotal>
+                <div className="price-itens">
+                  <span>Total de itens</span>
+                  <span>
+                    {Intl.NumberFormat("pt-BR", {
+                      style: "currency",
+                      currency: "BRL",
+                    }).format(total)}
+                  </span>
                 </div>
-              </div>
-
-              <div className="coffee-price">
-                <strong>R$ 9,90</strong>
-              </div>
-            </li>
-
-            <li className="coffee-item">
-              <img src={imagePng} alt="" className="coffee-item__thumbnail" />
-
-              <div className="coffee-item__details">
-                <span>Expresso Tradicional</span>
-
-                <div className="coffee-buttons">
-                  <InputNumber
-                    value={coffeeQuantity}
-                    onClickIncrement={() =>
-                      setCoffeeQuantity(coffeeQuantity + 1)
-                    }
-                    onClickDecrement={() =>
-                      setCoffeeQuantity(coffeeQuantity - 1)
-                    }
-                  />
-                  <RemoveButton onClick={() => alert("Removido")} />
+                <div className="price-delivery">
+                  <span>Entrega</span>
+                  <span>R$ 3,50</span>
                 </div>
-              </div>
+                <div className="price-total">
+                  <strong>Total</strong>
+                  <strong>
+                    {Intl.NumberFormat("pt-BR", {
+                      style: "currency",
+                      currency: "BRL",
+                    }).format(total + 3.5)}
+                  </strong>
+                </div>
+              </CoffeeTotal>
 
-              <div className="coffee-price">
-                <strong>R$ 9,90</strong>
-              </div>
-            </li>
-          </SelectedCoffeeList>
-
-          <CoffeeTotal>
-            <div className="price-itens">
-              <span>Total de itens</span>
-              <span>R$ 29,70</span>
-            </div>
-            <div className="price-delivery">
-              <span>Entrega</span>
-              <span>R$ 3,50</span>
-            </div>
-            <div className="price-total">
-              <strong>Total</strong>
-              <strong>R$ 33,20</strong>
-            </div>
-          </CoffeeTotal>
-
-          <NavLink to="/success">
-            <Button type="button">Confirmar Pedido</Button>
-          </NavLink>
+              <Button type="submit">Confirmar Pedido</Button>
+            </>
+          ) : (
+            <>
+              <p>Você não possui nenhum item adicionado ao carrinho.</p>
+              <br />
+              <NavLink to="/">Ir para lista de produtos</NavLink>
+            </>
+          )}
         </SelectedCoffeeContent>
       </CoffeeContainer>
     </CheckoutForm>

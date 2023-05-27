@@ -1,11 +1,11 @@
-import { useState } from "react";
 import { Minus, Plus, ShoppingCartSimple } from "phosphor-react";
+import { useState } from "react";
 
 import { defaultTheme } from "../../../../styles/themes/defaultTheme";
 
 import { CoffeeCardContainer, Tag } from "./styles";
 
-interface CoffeeCardProps {
+interface CoffeeItem {
   id: number;
   title: string;
   description: string;
@@ -14,21 +14,17 @@ interface CoffeeCardProps {
   imageUrl: string;
 }
 
-export function CoffeeCard({
-  id,
-  title,
-  description,
-  price,
-  tags,
-  imageUrl,
-}: CoffeeCardProps) {
+interface CoffeeCardProps {
+  coffeeItem: CoffeeItem;
+  // eslint-disable-next-line no-unused-vars
+  onClickAddToCart: (coffee: CoffeeItem, amount: number) => void;
+}
+
+export function CoffeeCard({ coffeeItem, onClickAddToCart }: CoffeeCardProps) {
   const [amount, setAmount] = useState(1);
 
-  function handleAddToCart(currentId: number) {
-    console.log({
-      id: currentId,
-      amount,
-    });
+  function handleAddToCart(coffee: CoffeeItem) {
+    onClickAddToCart(coffee, amount);
   }
 
   function handleIncrementAmount() {
@@ -45,23 +41,23 @@ export function CoffeeCard({
 
   return (
     <CoffeeCardContainer>
-      <img src={imageUrl} alt="Coffee" />
+      <img src={coffeeItem.imageUrl} alt="Coffee" />
 
       <div className="tag-list">
-        {tags.map(tag => (
+        {coffeeItem.tags.map(tag => (
           <Tag key={tag}>{tag}</Tag>
         ))}
       </div>
 
       <div className="card-description">
-        <strong>{title}</strong>
-        <p>{description}</p>
+        <strong>{coffeeItem.title}</strong>
+        <p>{coffeeItem.description}</p>
       </div>
 
       <div className="card-footer">
         <div className="price">
           <span>R$</span>
-          <strong>{price.toLocaleString().padEnd(4, "0")}</strong>
+          <strong>{coffeeItem.price.toLocaleString().padEnd(4, "0")}</strong>
         </div>
 
         <div className="amount-buttons">
@@ -78,7 +74,7 @@ export function CoffeeCard({
           <button
             type="button"
             className="btn-cart"
-            onClick={() => handleAddToCart(id)}
+            onClick={() => handleAddToCart(coffeeItem)}
           >
             <ShoppingCartSimple
               color={defaultTheme.white}
