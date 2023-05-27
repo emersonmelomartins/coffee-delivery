@@ -18,6 +18,7 @@ export const InputButtonContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    color: ${props => props.theme["base-title"]};
   }
 
   button {

@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const RemoveButtonContainer = styled.button`
   border: none;
   background-color: ${props => props.theme["base-button"]};
+  color: ${props => props.theme["base-text"]};
   border-radius: 6px;
   padding: 0 0.5rem;
   height: 2rem;

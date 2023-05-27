@@ -26,24 +26,28 @@ export function Introduction() {
           <div className="introduction-info-items">
             <InfoText
               iconBackground="dark-yellow"
-              text="Compra simples e segura"
               icon={<ShoppingCart color={defaultTheme.white} weight="fill" />}
-            />
+            >
+              <p>Compra simples e segura</p>
+            </InfoText>
             <InfoText
               iconBackground="gray"
-              text="Entrega rápida e rastreada"
               icon={<Package color={defaultTheme.white} weight="fill" />}
-            />
+            >
+              <p>Entrega rápida e rastreada</p>
+            </InfoText>
             <InfoText
               iconBackground="yellow"
-              text="Embalagem mantém o café intacto"
               icon={<Timer color={defaultTheme.white} weight="fill" />}
-            />
+            >
+              <p>Embalagem mantém o café intacto</p>
+            </InfoText>
             <InfoText
               iconBackground="purple"
-              text="O café chega fresquinho até você"
               icon={<Coffee color={defaultTheme.white} weight="fill" />}
-            />
+            >
+              <p> O café chega fresquinho até você</p>
+            </InfoText>
           </div>
         </div>
         <div className="hero">

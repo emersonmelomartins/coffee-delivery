@@ -2,15 +2,15 @@ import { ReactNode } from "react";
 import { BgColorType, IconContent, InfoTextContainer } from "./styles";
 
 interface InfoTextProps {
-  text: string;
   icon: ReactNode;
   iconBackground: BgColorType;
+  children: ReactNode;
 }
-export function InfoText({ icon, text, iconBackground }: InfoTextProps) {
+export function InfoText({ icon, children, iconBackground }: InfoTextProps) {
   return (
     <InfoTextContainer>
       <IconContent $bgColor={iconBackground}>{icon}</IconContent>
-      {text}
+      <div>{children}</div>
     </InfoTextContainer>
   );
 }

@@ -5,9 +5,24 @@ export const InfoTextContainer = styled.div`
   flex: calc(40% - 0.5rem);
   margin: 0.5rem;
   display: flex;
-  align-items: center;
   gap: 0.5rem;
-  justify-content: start;
+  align-items: center;
+  justify-content: flex-start;
+
+  div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    color: ${props => props.theme["base-text"]};
+
+    p,
+    strong {
+      margin: 0px !important;
+      line-height: 1.3 !important;
+      font-size: 1rem !important;
+    }
+  }
 `;
 
 const bgColors = {
