@@ -4,7 +4,7 @@ export const RemoveButtonContainer = styled.button`
   border: none;
   background-color: ${props => props.theme["base-button"]};
   border-radius: 6px;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   height: 2rem;
   font-size: 0.75rem;
   text-transform: uppercase;

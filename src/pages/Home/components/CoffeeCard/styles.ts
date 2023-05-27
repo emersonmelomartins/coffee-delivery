@@ -122,8 +122,12 @@ export const CoffeeCardContainer = styled.div`
       }
 
       button.btn-cart {
-        background: ${props => props.theme["purple-dark"]};
+        background: ${props => props.theme.purple};
         border-radius: 8px;
+
+        &:hover {
+          background: ${props => props.theme["purple-dark"]};
+        }
       }
     }
   }

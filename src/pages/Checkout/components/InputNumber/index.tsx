@@ -1,14 +1,30 @@
 import { Minus, Plus } from "phosphor-react";
 import { InputButtonContainer } from "./styles";
 
-export function InputNumber() {
+interface InputNumberProps {
+  onClickIncrement: () => void;
+  onClickDecrement: () => void;
+  value: number;
+}
+
+export function InputNumber({
+  onClickIncrement,
+  onClickDecrement,
+  value,
+}: InputNumberProps) {
+  function handleIncrement() {
+    onClickIncrement();
+  }
+  function handleDecrement() {
+    onClickDecrement();
+  }
   return (
     <InputButtonContainer>
-      <button type="button" className="minus-button">
+      <button type="button" className="minus-button" onClick={handleDecrement}>
         <Minus />
       </button>
-      <button type="button">0</button>
-      <button type="button" className="plus-button">
+      <input type="text" readOnly value={value} />
+      <button type="button" className="plus-button" onClick={handleIncrement}>
         <Plus />
       </button>
     </InputButtonContainer>

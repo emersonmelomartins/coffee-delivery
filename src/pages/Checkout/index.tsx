@@ -14,6 +14,7 @@ import {
   AddressContent,
   CheckoutForm,
   CoffeeContainer,
+  CoffeeTotal,
   OrderContainer,
   PaymentContent,
   PaymentRadioSelection,
@@ -22,6 +23,7 @@ import {
 } from "./styles";
 
 import imagePng from "../../assets/cafe-arabe.png";
+import { Button } from "../../components/Button";
 import { InputNumber } from "./components/InputNumber";
 import { RemoveButton } from "./components/RemoveButton";
 
@@ -35,6 +37,8 @@ export function Checkout() {
   const [selectedPaymentType, setSelectedPaymentType] = useState<PaymentType>(
     PaymentType.CreditCard
   );
+
+  const [coffeeQuantity, setCoffeeQuantity] = useState(1);
 
   return (
     <CheckoutForm>
@@ -183,8 +187,16 @@ export function Checkout() {
                 <span>Expresso Tradicional</span>
 
                 <div className="coffee-buttons">
-                  <InputNumber />
-                  <RemoveButton />
+                  <InputNumber
+                    value={coffeeQuantity}
+                    onClickIncrement={() =>
+                      setCoffeeQuantity(coffeeQuantity + 1)
+                    }
+                    onClickDecrement={() =>
+                      setCoffeeQuantity(coffeeQuantity - 1)
+                    }
+                  />
+                  <RemoveButton onClick={() => alert("Removido")} />
                 </div>
               </div>
 
@@ -200,8 +212,16 @@ export function Checkout() {
                 <span>Expresso Tradicional</span>
 
                 <div className="coffee-buttons">
-                  <InputNumber />
-                  <RemoveButton />
+                  <InputNumber
+                    value={coffeeQuantity}
+                    onClickIncrement={() =>
+                      setCoffeeQuantity(coffeeQuantity + 1)
+                    }
+                    onClickDecrement={() =>
+                      setCoffeeQuantity(coffeeQuantity - 1)
+                    }
+                  />
+                  <RemoveButton onClick={() => alert("Removido")} />
                 </div>
               </div>
 
@@ -211,9 +231,22 @@ export function Checkout() {
             </li>
           </SelectedCoffeeList>
 
-          <p>Total </p>
+          <CoffeeTotal>
+            <div className="price-itens">
+              <span>Total de itens</span>
+              <span>R$ 29,70</span>
+            </div>
+            <div className="price-delivery">
+              <span>Entrega</span>
+              <span>R$ 3,50</span>
+            </div>
+            <div className="price-total">
+              <strong>Total</strong>
+              <strong>R$ 33,20</strong>
+            </div>
+          </CoffeeTotal>
 
-          <button type="submit">Confirmar Pedido</button>
+          <Button type="submit">Confirmar Pedido</Button>
         </SelectedCoffeeContent>
       </CoffeeContainer>
     </CheckoutForm>

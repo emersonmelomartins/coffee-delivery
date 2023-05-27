@@ -5,38 +5,40 @@ export const InputButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  button {
+  button,
+  input {
     border: none;
     background-color: ${props => props.theme["base-button"]};
     margin: 0;
-    padding: 0.5rem;
     height: 2rem;
-    /* font-size: 1rem; */
+    width: 2rem;
+    text-align: center;
+    font-size: 1rem;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
+  button {
     svg {
       color: ${props => props.theme.purple};
     }
-  }
-
-  button.minus-button {
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
 
     &:hover {
       background-color: ${props => props.theme["base-hover"]};
     }
-  }
 
-  button.plus-button {
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
+    &.minus-button {
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
 
-    &:hover {
-      background-color: ${props => props.theme["base-hover"]};
+    &.plus-button {
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
     }
   }
-
-  /* text-transform: uppercase; */
 
   display: flex;
 `;

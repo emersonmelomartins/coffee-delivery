@@ -135,7 +135,8 @@ export const SelectedCoffeeList = styled.ul`
     align-items: center;
     justify-items: center;
     gap: 1rem;
-    padding: 1.5rem 0.5rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid ${props => props.theme["base-button"]};
 
     img {
       width: 4rem;
@@ -147,6 +148,8 @@ export const SelectedCoffeeList = styled.ul`
       flex-direction: column;
       gap: 0.5rem;
       flex: 1;
+      color: ${props => props.theme["base-subtitle"]};
+      font-family: "Roboto";
 
       .coffee-buttons {
         display: flex;
@@ -157,6 +160,34 @@ export const SelectedCoffeeList = styled.ul`
     .coffee-price {
       display: flex;
       align-self: flex-start;
+      strong {
+        font-family: "Roboto";
+        font-size: 1rem;
+        color: ${props => props.theme["base-text"]};
+      }
+    }
+  }
+`;
+
+export const CoffeeTotal = styled.div`
+  padding: 1.5rem 0;
+
+  .price-itens,
+  .price-delivery,
+  .price-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    color: ${props => props.theme["base-text"]};
+
+    span:first-child {
+      font-size: 0.875rem;
+    }
+
+    strong {
+      font-size: 1.25rem;
+      color: ${props => props.theme["base-subtitle"]};
     }
   }
 `;
